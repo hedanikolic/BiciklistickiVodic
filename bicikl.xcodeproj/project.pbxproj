@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B30D2512C2CFC4600E44906 /* biciklApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2502C2CFC4600E44906 /* biciklApp.swift */; };
+		8B30D2552C2CFC4A00E44906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30D2542C2CFC4A00E44906 /* Assets.xcassets */; };
+		8B30D2582C2CFC4A00E44906 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30D2572C2CFC4A00E44906 /* Preview Assets.xcassets */; };
+		8B30D2622C2CFC4B00E44906 /* biciklTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2612C2CFC4B00E44906 /* biciklTests.swift */; };
+		8B30D26C2C2CFC4B00E44906 /* biciklUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D26B2C2CFC4B00E44906 /* biciklUITests.swift */; };
+		8B30D26E2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D26D2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift */; };
+		8B30D27B2C2CFD4300E44906 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D27A2C2CFD4300E44906 /* MapView.swift */; };
+		8B30D27D2C2CFD5C00E44906 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D27C2C2CFD5C00E44906 /* RoutesView.swift */; };
+		8B30D27F2C2CFD7200E44906 /* BikeStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D27E2C2CFD7200E44906 /* BikeStopView.swift */; };
+		8B30D2812C2CFDEC00E44906 /* BikeStopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2802C2CFDEC00E44906 /* BikeStopData.swift */; };
+		8B30D2832C2D01AB00E44906 /* RouteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2822C2D01AB00E44906 /* RouteDetailView.swift */; };
+		8B30D2852C2D01CA00E44906 /* RouteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2842C2D01CA00E44906 /* RouteList.swift */; };
+		8B30D2872C2D01FC00E44906 /* RouteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2862C2D01FC00E44906 /* RouteData.swift */; };
+		8B30D2892C2D0A2500E44906 /* MapViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2882C2D0A2500E44906 /* MapViewWrapper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B30D25E2C2CFC4B00E44906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B30D2452C2CFC4600E44906 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B30D24C2C2CFC4600E44906;
+			remoteInfo = bicikl;
+		};
+		8B30D2682C2CFC4B00E44906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B30D2452C2CFC4600E44906 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B30D24C2C2CFC4600E44906;
+			remoteInfo = bicikl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8B30D24D2C2CFC4600E44906 /* bicikl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bicikl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B30D2502C2CFC4600E44906 /* biciklApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklApp.swift; sourceTree = "<group>"; };
+		8B30D2542C2CFC4A00E44906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B30D2572C2CFC4A00E44906 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B30D25D2C2CFC4B00E44906 /* biciklTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = biciklTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B30D2612C2CFC4B00E44906 /* biciklTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklTests.swift; sourceTree = "<group>"; };
+		8B30D2672C2CFC4B00E44906 /* biciklUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = biciklUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B30D26B2C2CFC4B00E44906 /* biciklUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklUITests.swift; sourceTree = "<group>"; };
+		8B30D26D2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B30D27A2C2CFD4300E44906 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		8B30D27C2C2CFD5C00E44906 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
+		8B30D27E2C2CFD7200E44906 /* BikeStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStopView.swift; sourceTree = "<group>"; };
+		8B30D2802C2CFDEC00E44906 /* BikeStopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStopData.swift; sourceTree = "<group>"; };
+		8B30D2822C2D01AB00E44906 /* RouteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailView.swift; sourceTree = "<group>"; };
+		8B30D2842C2D01CA00E44906 /* RouteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteList.swift; sourceTree = "<group>"; };
+		8B30D2862C2D01FC00E44906 /* RouteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteData.swift; sourceTree = "<group>"; };
+		8B30D2882C2D0A2500E44906 /* MapViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewWrapper.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B30D24A2C2CFC4600E44906 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B30D25A2C2CFC4B00E44906 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B30D2642C2CFC4B00E44906 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B30D2442C2CFC4600E44906 = {
+			isa = PBXGroup;
+			children = (
+				8B30D24F2C2CFC4600E44906 /* bicikl */,
+				8B30D2602C2CFC4B00E44906 /* biciklTests */,
+				8B30D26A2C2CFC4B00E44906 /* biciklUITests */,
+				8B30D24E2C2CFC4600E44906 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8B30D24E2C2CFC4600E44906 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B30D24D2C2CFC4600E44906 /* bicikl.app */,
+				8B30D25D2C2CFC4B00E44906 /* biciklTests.xctest */,
+				8B30D2672C2CFC4B00E44906 /* biciklUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B30D24F2C2CFC4600E44906 /* bicikl */ = {
+			isa = PBXGroup;
+			children = (
+				8B30D2502C2CFC4600E44906 /* biciklApp.swift */,
+				8B30D2542C2CFC4A00E44906 /* Assets.xcassets */,
+				8B30D2562C2CFC4A00E44906 /* Preview Content */,
+				8B30D27A2C2CFD4300E44906 /* MapView.swift */,
+				8B30D27C2C2CFD5C00E44906 /* RoutesView.swift */,
+				8B30D2822C2D01AB00E44906 /* RouteDetailView.swift */,
+				8B30D27E2C2CFD7200E44906 /* BikeStopView.swift */,
+				8B30D2802C2CFDEC00E44906 /* BikeStopData.swift */,
+				8B30D2842C2D01CA00E44906 /* RouteList.swift */,
+				8B30D2862C2D01FC00E44906 /* RouteData.swift */,
+				8B30D2882C2D0A2500E44906 /* MapViewWrapper.swift */,
+			);
+			path = bicikl;
+			sourceTree = "<group>";
+		};
+		8B30D2562C2CFC4A00E44906 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8B30D2572C2CFC4A00E44906 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B30D2602C2CFC4B00E44906 /* biciklTests */ = {
+			isa = PBXGroup;
+			children = (
+				8B30D2612C2CFC4B00E44906 /* biciklTests.swift */,
+			);
+			path = biciklTests;
+			sourceTree = "<group>";
+		};
+		8B30D26A2C2CFC4B00E44906 /* biciklUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8B30D26B2C2CFC4B00E44906 /* biciklUITests.swift */,
+				8B30D26D2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift */,
+			);
+			path = biciklUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B30D24C2C2CFC4600E44906 /* bicikl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B30D2712C2CFC4B00E44906 /* Build configuration list for PBXNativeTarget "bicikl" */;
+			buildPhases = (
+				8B30D2492C2CFC4600E44906 /* Sources */,
+				8B30D24A2C2CFC4600E44906 /* Frameworks */,
+				8B30D24B2C2CFC4600E44906 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bicikl;
+			productName = bicikl;
+			productReference = 8B30D24D2C2CFC4600E44906 /* bicikl.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B30D25C2C2CFC4B00E44906 /* biciklTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B30D2742C2CFC4B00E44906 /* Build configuration list for PBXNativeTarget "biciklTests" */;
+			buildPhases = (
+				8B30D2592C2CFC4B00E44906 /* Sources */,
+				8B30D25A2C2CFC4B00E44906 /* Frameworks */,
+				8B30D25B2C2CFC4B00E44906 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B30D25F2C2CFC4B00E44906 /* PBXTargetDependency */,
+			);
+			name = biciklTests;
+			productName = biciklTests;
+			productReference = 8B30D25D2C2CFC4B00E44906 /* biciklTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8B30D2662C2CFC4B00E44906 /* biciklUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B30D2772C2CFC4B00E44906 /* Build configuration list for PBXNativeTarget "biciklUITests" */;
+			buildPhases = (
+				8B30D2632C2CFC4B00E44906 /* Sources */,
+				8B30D2642C2CFC4B00E44906 /* Frameworks */,
+				8B30D2652C2CFC4B00E44906 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B30D2692C2CFC4B00E44906 /* PBXTargetDependency */,
+			);
+			name = biciklUITests;
+			productName = biciklUITests;
+			productReference = 8B30D2672C2CFC4B00E44906 /* biciklUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B30D2452C2CFC4600E44906 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					8B30D24C2C2CFC4600E44906 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					8B30D25C2C2CFC4B00E44906 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 8B30D24C2C2CFC4600E44906;
+					};
+					8B30D2662C2CFC4B00E44906 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 8B30D24C2C2CFC4600E44906;
+					};
+				};
+			};
+			buildConfigurationList = 8B30D2482C2CFC4600E44906 /* Build configuration list for PBXProject "bicikl" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B30D2442C2CFC4600E44906;
+			productRefGroup = 8B30D24E2C2CFC4600E44906 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B30D24C2C2CFC4600E44906 /* bicikl */,
+				8B30D25C2C2CFC4B00E44906 /* biciklTests */,
+				8B30D2662C2CFC4B00E44906 /* biciklUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B30D24B2C2CFC4600E44906 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B30D2582C2CFC4A00E44906 /* Preview Assets.xcassets in Resources */,
+				8B30D2552C2CFC4A00E44906 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B30D25B2C2CFC4B00E44906 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B30D2652C2CFC4B00E44906 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B30D2492C2CFC4600E44906 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B30D27F2C2CFD7200E44906 /* BikeStopView.swift in Sources */,
+				8B30D2832C2D01AB00E44906 /* RouteDetailView.swift in Sources */,
+				8B30D27D2C2CFD5C00E44906 /* RoutesView.swift in Sources */,
+				8B30D2892C2D0A2500E44906 /* MapViewWrapper.swift in Sources */,
+				8B30D2812C2CFDEC00E44906 /* BikeStopData.swift in Sources */,
+				8B30D2852C2D01CA00E44906 /* RouteList.swift in Sources */,
+				8B30D27B2C2CFD4300E44906 /* MapView.swift in Sources */,
+				8B30D2512C2CFC4600E44906 /* biciklApp.swift in Sources */,
+				8B30D2872C2D01FC00E44906 /* RouteData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B30D2592C2CFC4B00E44906 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B30D2622C2CFC4B00E44906 /* biciklTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B30D2632C2CFC4B00E44906 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B30D26E2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift in Sources */,
+				8B30D26C2C2CFC4B00E44906 /* biciklUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B30D25F2C2CFC4B00E44906 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B30D24C2C2CFC4600E44906 /* bicikl */;
+			targetProxy = 8B30D25E2C2CFC4B00E44906 /* PBXContainerItemProxy */;
+		};
+		8B30D2692C2CFC4B00E44906 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B30D24C2C2CFC4600E44906 /* bicikl */;
+			targetProxy = 8B30D2682C2CFC4B00E44906 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8B30D26F2C2CFC4B00E44906 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8B30D2702C2CFC4B00E44906 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B30D2722C2CFC4B00E44906 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"bicikl/Preview Content\"";
+				DEVELOPMENT_TEAM = 3K2QY8MU52;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.hedanikolic.bicikl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B30D2732C2CFC4B00E44906 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"bicikl/Preview Content\"";
+				DEVELOPMENT_TEAM = 3K2QY8MU52;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.hedanikolic.bicikl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8B30D2752C2CFC4B00E44906 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.hedanikolic.biciklTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bicikl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/bicikl";
+			};
+			name = Debug;
+		};
+		8B30D2762C2CFC4B00E44906 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.hedanikolic.biciklTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bicikl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/bicikl";
+			};
+			name = Release;
+		};
+		8B30D2782C2CFC4B00E44906 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.hedanikolic.biciklUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bicikl;
+			};
+			name = Debug;
+		};
+		8B30D2792C2CFC4B00E44906 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = name.hedanikolic.biciklUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bicikl;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B30D2482C2CFC4600E44906 /* Build configuration list for PBXProject "bicikl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B30D26F2C2CFC4B00E44906 /* Debug */,
+				8B30D2702C2CFC4B00E44906 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B30D2712C2CFC4B00E44906 /* Build configuration list for PBXNativeTarget "bicikl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B30D2722C2CFC4B00E44906 /* Debug */,
+				8B30D2732C2CFC4B00E44906 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B30D2742C2CFC4B00E44906 /* Build configuration list for PBXNativeTarget "biciklTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B30D2752C2CFC4B00E44906 /* Debug */,
+				8B30D2762C2CFC4B00E44906 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B30D2772C2CFC4B00E44906 /* Build configuration list for PBXNativeTarget "biciklUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B30D2782C2CFC4B00E44906 /* Debug */,
+				8B30D2792C2CFC4B00E44906 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B30D2452C2CFC4600E44906 /* Project object */;
+}
