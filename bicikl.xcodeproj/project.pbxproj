@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1F0F1E2E6856AF00A651F4 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B1F0F1D2E6856AE00A651F4 /* GoogleService-Info (1).plist */; };
 		8B30D2512C2CFC4600E44906 /* biciklApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2502C2CFC4600E44906 /* biciklApp.swift */; };
 		8B30D2552C2CFC4A00E44906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30D2542C2CFC4A00E44906 /* Assets.xcassets */; };
 		8B30D2582C2CFC4A00E44906 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B30D2572C2CFC4A00E44906 /* Preview Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B1F0F1D2E6856AE00A651F4 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
 		8B30D24D2C2CFC4600E44906 /* bicikl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bicikl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B30D2502C2CFC4600E44906 /* biciklApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklApp.swift; sourceTree = "<group>"; };
 		8B30D2542C2CFC4A00E44906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		8B30D24F2C2CFC4600E44906 /* bicikl */ = {
 			isa = PBXGroup;
 			children = (
+				8B1F0F1D2E6856AE00A651F4 /* GoogleService-Info (1).plist */,
 				8B30D2502C2CFC4600E44906 /* biciklApp.swift */,
 				8B30D2542C2CFC4A00E44906 /* Assets.xcassets */,
 				8B30D2562C2CFC4A00E44906 /* Preview Content */,
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B30D2582C2CFC4A00E44906 /* Preview Assets.xcassets in Resources */,
+				8B1F0F1E2E6856AF00A651F4 /* GoogleService-Info (1).plist in Resources */,
 				8B30D2552C2CFC4A00E44906 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

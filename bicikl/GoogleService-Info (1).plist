@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBbcX7mVbiXAjBAG-5SL21QiGBry1sba8I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>537927769523</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>name.hedanikolic.bicikl</string>
+	<key>PROJECT_ID</key>
+	<string>biciklisticki-vodic</string>
+	<key>STORAGE_BUCKET</key>
+	<string>biciklisticki-vodic.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:537927769523:ios:0fa5b71c34e668ea6affc6</string>
+</dict>
+</plist>
