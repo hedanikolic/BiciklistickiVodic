@@ -15,13 +15,16 @@
 		8B30D26C2C2CFC4B00E44906 /* biciklUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D26B2C2CFC4B00E44906 /* biciklUITests.swift */; };
 		8B30D26E2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D26D2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift */; };
 		8B30D27B2C2CFD4300E44906 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D27A2C2CFD4300E44906 /* MapView.swift */; };
-		8B30D27D2C2CFD5C00E44906 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D27C2C2CFD5C00E44906 /* RoutesView.swift */; };
-		8B30D27F2C2CFD7200E44906 /* BikeStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D27E2C2CFD7200E44906 /* BikeStopView.swift */; };
 		8B30D2812C2CFDEC00E44906 /* BikeStopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2802C2CFDEC00E44906 /* BikeStopData.swift */; };
 		8B30D2832C2D01AB00E44906 /* RouteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2822C2D01AB00E44906 /* RouteDetailView.swift */; };
 		8B30D2852C2D01CA00E44906 /* RouteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2842C2D01CA00E44906 /* RouteList.swift */; };
 		8B30D2872C2D01FC00E44906 /* RouteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2862C2D01FC00E44906 /* RouteData.swift */; };
 		8B30D2892C2D0A2500E44906 /* MapViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B30D2882C2D0A2500E44906 /* MapViewWrapper.swift */; };
+		8B80C2D12E686B02000C8BD4 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B80C2D02E686B02000C8BD4 /* FirebaseCore */; };
+		8B80C2D32E686B02000C8BD4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8B80C2D22E686B02000C8BD4 /* FirebaseDatabase */; };
+		8B80C2D42E686B8F000C8BD4 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B1F0F1D2E6856AE00A651F4 /* GoogleService-Info (1).plist */; };
+		8B80C2D62E69F333000C8BD4 /* BikeStopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80C2D52E69F332000C8BD4 /* BikeStopDetailView.swift */; };
+		8B80C2D82E6A434D000C8BD4 /* BikeStopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B80C2D72E6A434D000C8BD4 /* BikeStopList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +56,13 @@
 		8B30D26B2C2CFC4B00E44906 /* biciklUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklUITests.swift; sourceTree = "<group>"; };
 		8B30D26D2C2CFC4B00E44906 /* biciklUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = biciklUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B30D27A2C2CFD4300E44906 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		8B30D27C2C2CFD5C00E44906 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
-		8B30D27E2C2CFD7200E44906 /* BikeStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStopView.swift; sourceTree = "<group>"; };
 		8B30D2802C2CFDEC00E44906 /* BikeStopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStopData.swift; sourceTree = "<group>"; };
 		8B30D2822C2D01AB00E44906 /* RouteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailView.swift; sourceTree = "<group>"; };
 		8B30D2842C2D01CA00E44906 /* RouteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteList.swift; sourceTree = "<group>"; };
 		8B30D2862C2D01FC00E44906 /* RouteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteData.swift; sourceTree = "<group>"; };
 		8B30D2882C2D0A2500E44906 /* MapViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewWrapper.swift; sourceTree = "<group>"; };
+		8B80C2D52E69F332000C8BD4 /* BikeStopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStopDetailView.swift; sourceTree = "<group>"; };
+		8B80C2D72E6A434D000C8BD4 /* BikeStopList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStopList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B80C2D32E686B02000C8BD4 /* FirebaseDatabase in Frameworks */,
+				8B80C2D12E686B02000C8BD4 /* FirebaseCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,13 +120,13 @@
 				8B30D2542C2CFC4A00E44906 /* Assets.xcassets */,
 				8B30D2562C2CFC4A00E44906 /* Preview Content */,
 				8B30D27A2C2CFD4300E44906 /* MapView.swift */,
-				8B30D27C2C2CFD5C00E44906 /* RoutesView.swift */,
 				8B30D2822C2D01AB00E44906 /* RouteDetailView.swift */,
-				8B30D27E2C2CFD7200E44906 /* BikeStopView.swift */,
 				8B30D2802C2CFDEC00E44906 /* BikeStopData.swift */,
 				8B30D2842C2D01CA00E44906 /* RouteList.swift */,
 				8B30D2862C2D01FC00E44906 /* RouteData.swift */,
 				8B30D2882C2D0A2500E44906 /* MapViewWrapper.swift */,
+				8B80C2D52E69F332000C8BD4 /* BikeStopDetailView.swift */,
+				8B80C2D72E6A434D000C8BD4 /* BikeStopList.swift */,
 			);
 			path = bicikl;
 			sourceTree = "<group>";
@@ -167,6 +172,10 @@
 			dependencies = (
 			);
 			name = bicikl;
+			packageProductDependencies = (
+				8B80C2D02E686B02000C8BD4 /* FirebaseCore */,
+				8B80C2D22E686B02000C8BD4 /* FirebaseDatabase */,
+			);
 			productName = bicikl;
 			productReference = 8B30D24D2C2CFC4600E44906 /* bicikl.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +248,9 @@
 				Base,
 			);
 			mainGroup = 8B30D2442C2CFC4600E44906;
+			packageReferences = (
+				8B80C2CF2E686B02000C8BD4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 8B30D24E2C2CFC4600E44906 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B80C2D42E686B8F000C8BD4 /* GoogleService-Info (1).plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,12 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B30D27F2C2CFD7200E44906 /* BikeStopView.swift in Sources */,
 				8B30D2832C2D01AB00E44906 /* RouteDetailView.swift in Sources */,
-				8B30D27D2C2CFD5C00E44906 /* RoutesView.swift in Sources */,
+				8B80C2D82E6A434D000C8BD4 /* BikeStopList.swift in Sources */,
 				8B30D2892C2D0A2500E44906 /* MapViewWrapper.swift in Sources */,
 				8B30D2812C2CFDEC00E44906 /* BikeStopData.swift in Sources */,
 				8B30D2852C2D01CA00E44906 /* RouteList.swift in Sources */,
+				8B80C2D62E69F333000C8BD4 /* BikeStopDetailView.swift in Sources */,
 				8B30D27B2C2CFD4300E44906 /* MapView.swift in Sources */,
 				8B30D2512C2CFC4600E44906 /* biciklApp.swift in Sources */,
 				8B30D2872C2D01FC00E44906 /* RouteData.swift in Sources */,
@@ -616,6 +629,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B80C2CF2E686B02000C8BD4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 11.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B80C2D02E686B02000C8BD4 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B80C2CF2E686B02000C8BD4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		8B80C2D22E686B02000C8BD4 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B80C2CF2E686B02000C8BD4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8B30D2452C2CFC4600E44906 /* Project object */;
 }

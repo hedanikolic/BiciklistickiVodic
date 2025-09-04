@@ -7,85 +7,256 @@
 
 import SwiftUI
 import MapKit
+import UIKit
 
 struct MapViewWrapper: UIViewRepresentable {
     var region: MKCoordinateRegion
     var bikeStops: [BikeStop]
     var routeData: RouteData
     var onSelectRoute: (Route) -> Void
+    var onSelectBikeStop: (BikeStop) -> Void
+
+    // Annotation carrying the BikeStop model
+    private class BikeStopAnnotation: MKPointAnnotation {
+        let stop: BikeStop
+        init(stop: BikeStop) {
+            self.stop = stop
+            super.init()
+            // If you want labels visible even without tap, uncomment:
+            // self.title = stop.name
+            self.coordinate = CLLocationCoordinate2D(
+                latitude: stop.location.latitude,
+                longitude: stop.location.longitude
+            )
+        }
+    }
 
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapViewWrapper
+        var selectedRouteName: String?   // currently highlighted route (or nil)
 
         init(parent: MapViewWrapper) {
             self.parent = parent
         }
 
+        // ROUTE RENDERER – styles depend on whether this polyline is selected
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if let polyline = overlay as? MKPolyline {
                 let renderer = MKPolylineRenderer(polyline: polyline)
-                renderer.strokeColor = .blue
-                renderer.lineWidth = 4.0
+
+                if polyline.title == selectedRouteName {
+                    // highlighted
+                    renderer.strokeColor = UIColor.systemBlue
+                    renderer.lineWidth = 7.0
+                } else {
+                    // normal (visible) state
+                    renderer.strokeColor = UIColor.systemBlue.withAlphaComponent(0.5)
+                    renderer.lineWidth = 4.0
+                }
                 return renderer
             }
             return MKOverlayRenderer()
         }
+
+        // PIN VIEW – SF Symbol based on stop type (default iOS selection anim stays)
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            if annotation is MKUserLocation { return nil }
+
+            if let a = annotation as? BikeStopAnnotation {
+                let id = "BikeStop"
+                let view = mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MKMarkerAnnotationView
+                    ?? MKMarkerAnnotationView(annotation: a, reuseIdentifier: id)
+
+                view.annotation = a
+                view.canShowCallout = true
+
+                // choose SF Symbol by type
+                let symbolName: String = {
+                    switch a.stop.type.lowercased() {
+                    case "pump":    return "fuelpump"
+                    case "service": return "wrench.and.screwdriver.fill"
+                    case "rent":    return "bicycle"
+                    default:        return "mappin.circle"
+                    }
+                }()
+
+                view.glyphImage = UIImage(systemName: symbolName)
+
+                // optional: per-type colors
+                switch a.stop.type.lowercased() {
+                case "pump":    view.markerTintColor = .systemBlue
+                case "service": view.markerTintColor = .systemGreen
+                case "rent":    view.markerTintColor = .systemTeal
+                default:        view.markerTintColor = .systemGray
+                }
+
+                // info button in the callout
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                
+                return view
+            }
+
+            return nil
+        }
+        
+
+        // When a bike stop pin is tapped, open detail (default selection clears when tapping elsewhere)
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let a = view.annotation as? BikeStopAnnotation {
+                parent.onSelectBikeStop(a.stop)
+            }
+        }
+
+        // Helper: restyle existing route renderers in place
+        func restyleAllPolylines(_ mapView: MKMapView) {
+            for overlay in mapView.overlays {
+                guard let poly = overlay as? MKPolyline,
+                      let r = mapView.renderer(for: poly) as? MKPolylineRenderer
+                else { continue }
+
+                if poly.title == selectedRouteName {
+                    r.strokeColor = UIColor.systemBlue
+                    r.lineWidth = 6.0
+                } else {
+                    r.strokeColor = UIColor.systemBlue.withAlphaComponent(0.5)
+                    r.lineWidth = 4.0
+                }
+                r.setNeedsDisplay()
+            }
+        }
+
+        // Route tap handler (closest polyline). Tap elsewhere clears highlight.
+        @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+            let mapView = gestureRecognizer.view as! MKMapView
+            let touchPoint = gestureRecognizer.location(in: mapView)
+            let touchMapCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+
+            let closestPolyline = findClosestPolyline(to: touchMapCoordinate, in: mapView)
+
+            if let polyline = closestPolyline,
+               let routeName = polyline.title,
+               let route = parent.routeData.routes.first(where: { $0.name == routeName }) {
+
+                // Select this route
+                selectedRouteName = routeName
+                restyleAllPolylines(mapView)
+                parent.onSelectRoute(route)
+
+            } else {
+                // Tap on empty area → clear route highlight and deselect pins
+                selectedRouteName = nil
+                restyleAllPolylines(mapView)
+                mapView.deselectAnnotation(nil, animated: true)
+            }
+        }
+
+        // Nearest-polyline helpers
+        func findClosestPolyline(to coordinate: CLLocationCoordinate2D, in mapView: MKMapView) -> MKPolyline? {
+            var closestPolyline: MKPolyline? = nil
+            var closestDistance: CLLocationDistance = .greatestFiniteMagnitude
+
+            for overlay in mapView.overlays {
+                if let polyline = overlay as? MKPolyline {
+                    let distance = distance(from: coordinate, to: polyline)
+                    if distance < closestDistance {
+                        closestDistance = distance
+                        closestPolyline = polyline
+                    }
+                }
+            }
+            // threshold in meters
+            return closestDistance < 20 ? closestPolyline : nil
+        }
+
+        func distance(from coordinate: CLLocationCoordinate2D, to polyline: MKPolyline) -> CLLocationDistance {
+            var minDistance: CLLocationDistance = .greatestFiniteMagnitude
+            let point = MKMapPoint(coordinate)
+            for i in 0..<polyline.pointCount - 1 {
+                let pointA = polyline.points()[i]
+                let pointB = polyline.points()[i + 1]
+                let segmentDistance = distanceFromPoint(point, toSegmentBetween: pointA, and: pointB)
+                minDistance = min(minDistance, segmentDistance)
+            }
+            return minDistance
+        }
+
+        func distanceFromPoint(_ point: MKMapPoint, toSegmentBetween pointA: MKMapPoint, and pointB: MKMapPoint) -> CLLocationDistance {
+            let dx = pointB.x - pointA.x
+            let dy = pointB.y - pointA.y
+            let lengthSquared = dx * dx + dy * dy
+            if lengthSquared == 0 { return point.distance(to: pointA) }
+            var t = ((point.x - pointA.x) * dx + (point.y - pointA.y) * dy) / lengthSquared
+            t = max(0, min(1, t))
+            let projection = MKMapPoint(x: pointA.x + t * dx, y: pointA.y + t * dy)
+            return point.distance(to: projection)
+        }
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
+        Coordinator(parent: self)
     }
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
-        mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: false)
 
-        // Add annotations for bike stops
-        for bikeStop in bikeStops {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: bikeStop.latitude, longitude: bikeStop.longitude)
-            annotation.title = bikeStop.name
-            mapView.addAnnotation(annotation)
-        }
+        rebuildMapContent(mapView)
 
-        
-        let routes: [(start: CLLocationCoordinate2D, via: CLLocationCoordinate2D?, end: CLLocationCoordinate2D)] = [
-            (start: CLLocationCoordinate2D(latitude: 45.56119, longitude: 18.68025), via: nil, end: CLLocationCoordinate2D(latitude: 45.55241, longitude: 18.73033)), // Kapucinska - Zeleno polje
-            (start: CLLocationCoordinate2D(latitude: 45.55819, longitude: 18.68273), via: nil, end: CLLocationCoordinate2D(latitude: 45.55446, longitude: 18.72192)), // Trznica - Trg bana J. J.
-            (start: CLLocationCoordinate2D(latitude: 45.56696, longitude: 18.66481), via: nil, end: CLLocationCoordinate2D(latitude: 45.55830, longitude: 18.70706)), // Promenada(desna obala)
-            (start: CLLocationCoordinate2D(latitude: 45.56764, longitude: 18.66958), via: nil, end: CLLocationCoordinate2D(latitude: 45.56335, longitude: 18.71748)), // Promenada(lijeva obala)
-            (start: CLLocationCoordinate2D(latitude: 45.54529, longitude: 18.69267), via: nil, end: CLLocationCoordinate2D(latitude: 45.56134, longitude: 18.70059)), // Gradski vrt - Tudmanov most
-            (start: CLLocationCoordinate2D(latitude: 45.56273, longitude: 18.70186), via: nil, end: CLLocationCoordinate2D(latitude: 45.59401, longitude: 18.74005)), // Tudmanov most - Bilje
-            (start: CLLocationCoordinate2D(latitude: 45.56034, longitude: 18.68564), via: nil, end: CLLocationCoordinate2D(latitude: 45.55722, longitude: 18.69680)), // Stepinceva - Trpimirova
-            (start: CLLocationCoordinate2D(latitude: 45.54519, longitude: 18.68119), via: nil, end: CLLocationCoordinate2D(latitude: 45.54677, longitude: 18.72901)), // Gacka - Divaltova
-            (start: CLLocationCoordinate2D(latitude: 45.55885, longitude: 18.66218), via: nil, end: CLLocationCoordinate2D(latitude: 45.55727, longitude: 18.68585)), // Gundulićeva
-            (start: CLLocationCoordinate2D(latitude: 45.54202, longitude: 18.70901), via: nil, end: CLLocationCoordinate2D(latitude: 45.55868, longitude: 18.70540)), // Svačićeva
-            (start: CLLocationCoordinate2D(latitude: 45.54241, longitude: 18.70895), via: nil, end: CLLocationCoordinate2D(latitude: 45.54349, longitude: 18.71831)), // Opatijska
-            (start: CLLocationCoordinate2D(latitude: 45.54389, longitude: 18.69671), via: nil, end: CLLocationCoordinate2D(latitude: 45.54286, longitude: 18.70154)), // Ul. Woodrowa Wilsona - Kutinska
-            (start: CLLocationCoordinate2D(latitude: 45.55422, longitude: 18.67573), via: nil, end: CLLocationCoordinate2D(latitude: 45.54631, longitude: 18.67865)), // Vinkovačka
-            (start: CLLocationCoordinate2D(latitude: 45.54157, longitude: 18.64762), via: nil, end: CLLocationCoordinate2D(latitude: 45.55112, longitude: 18.63393)), // Borova - Portanova
-            (start: CLLocationCoordinate2D(latitude: 45.55603, longitude: 18.63502), via: CLLocationCoordinate2D(latitude: 45.55579, longitude: 18.64023), end: CLLocationCoordinate2D(latitude: 45.55729, longitude: 18.64051)), // Svilajska (uz Portanovu)
-            (start: CLLocationCoordinate2D(latitude: 45.55622, longitude: 18.67854), via: nil, end: CLLocationCoordinate2D(latitude: 45.55823, longitude: 18.67843)), // Prolaz Ante Slaviceka
-            (start: CLLocationCoordinate2D(latitude: 45.54949, longitude: 18.69810), via: nil, end: CLLocationCoordinate2D(latitude: 45.55214, longitude: 18.70159)) // Setaliste Joze Petrovica (Sjenjak)
-        ]
-        
-        
-        for (index, route) in routes.enumerated() {
-            let routeName = routeData.routes[index].name
-            addRoute(to: mapView, from: route.start, via: route.via, to: route.end, withName: routeName)
-        }
-
-        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTapGesture(_:)))
+        let tapGesture = UITapGestureRecognizer(
+            target: context.coordinator,
+            action: #selector(context.coordinator.handleTapGesture(_:))
+        )
+        // important: don't swallow touches so annotation selection works normally
+        tapGesture.cancelsTouchesInView = false
         mapView.addGestureRecognizer(tapGesture)
 
         return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        // Update the map view if needed
+        // Rebuild overlays/annotations whenever routeData/bikeStops change
+        rebuildMapContent(uiView)
     }
 
+    // Build all overlays/annotations
+    private func rebuildMapContent(_ mapView: MKMapView) {
+        // Clear overlays (routes) to avoid duplicates after data updates
+        mapView.removeOverlays(mapView.overlays)
+
+        // Keep user location if enabled; remove our annotations only
+        let nonUserAnnotations = mapView.annotations.filter { !($0 is MKUserLocation) }
+        mapView.removeAnnotations(nonUserAnnotations)
+
+        // Bike stops (default selection behavior stays: enlarge until tap elsewhere)
+        for stop in bikeStops {
+            mapView.addAnnotation(BikeStopAnnotation(stop: stop))
+        }
+
+        // Routes
+        renderAllRoutes(on: mapView)
+
+        // Ensure initial styling reflects current selection (or none)
+        // Force renderers to be created, then style via coordinator
+        for overlay in mapView.overlays { _ = mapView.renderer(for: overlay) }
+        if let coord = mapView.delegate as? Coordinator {
+            coord.restyleAllPolylines(mapView)
+        }
+    }
+
+    private func renderAllRoutes(on mapView: MKMapView) {
+        for route in routeData.routes {
+            addRoute(
+                to: mapView,
+                from: route.start.cl,
+                via: route.via?.cl,
+                to: route.end.cl,
+                withName: route.name
+            )
+        }
+    }
+
+    // Draw a computed route with optional via
     func addRoute(
         to mapView: MKMapView,
         from sourceCoordinate: CLLocationCoordinate2D,
@@ -102,13 +273,12 @@ struct MapViewWrapper: UIViewRepresentable {
             let r = MKDirections.Request()
             r.source = a
             r.destination = b
-            // Cycling isn't a dedicated type in MapKit; .walking usually snaps better to bike paths than .automobile.
             r.transportType = .walking
             r.requestsAlternateRoutes = false
             return r
         }
 
-        // If no via: do a single A→B request
+        // If no via: single A→B request
         guard let viaCoordinate = viaCoordinate else {
             let directions = MKDirections(request: request(sourceItem, destinationItem))
             directions.calculate { response, error in
@@ -127,7 +297,7 @@ struct MapViewWrapper: UIViewRepresentable {
             return
         }
 
-        // With via: do two requests A→via and via→B
+        // With via: A→via then via→B
         let viaItem = MKMapItem(placemark: MKPlacemark(coordinate: viaCoordinate))
 
         let d1 = MKDirections(request: request(sourceItem, viaItem))
@@ -155,72 +325,5 @@ struct MapViewWrapper: UIViewRepresentable {
                 }
             }
         }
-    }
-
-}
-// Setting the tap gesture for routes
-extension MapViewWrapper.Coordinator {
-    @objc func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
-        let mapView = gestureRecognizer.view as! MKMapView
-        let touchPoint = gestureRecognizer.location(in: mapView)
-        let touchMapCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-
-        // Find the closest polyline
-        let closestPolyline = findClosestPolyline(to: touchMapCoordinate, in: mapView)
-
-        if let polyline = closestPolyline {
-            if let routeName = polyline.title, let route = parent.routeData.routes.first(where: { $0.name == routeName }) {
-                parent.onSelectRoute(route)
-            }
-        }
-    }
-
-    func findClosestPolyline(to coordinate: CLLocationCoordinate2D, in mapView: MKMapView) -> MKPolyline? {
-        var closestPolyline: MKPolyline? = nil
-        var closestDistance: CLLocationDistance = .greatestFiniteMagnitude
-
-        for overlay in mapView.overlays {
-            if let polyline = overlay as? MKPolyline {
-                let distance = distance(from: coordinate, to: polyline)
-                if distance < closestDistance {
-                    closestDistance = distance
-                    closestPolyline = polyline
-                }
-            }
-        }
-        // Set your desired threshold distance here
-        return closestDistance < 20 ? closestPolyline : nil
-    }
-
-    func distance(from coordinate: CLLocationCoordinate2D, to polyline: MKPolyline) -> CLLocationDistance {
-        var minDistance: CLLocationDistance = .greatestFiniteMagnitude
-
-        let point = MKMapPoint(coordinate)
-
-        for i in 0..<polyline.pointCount - 1 {
-            let pointA = polyline.points()[i]
-            let pointB = polyline.points()[i + 1]
-
-            let segmentDistance = distanceFromPoint(point, toSegmentBetween: pointA, and: pointB)
-            minDistance = min(minDistance, segmentDistance)
-        }
-
-        return minDistance
-    }
-
-    func distanceFromPoint(_ point: MKMapPoint, toSegmentBetween pointA: MKMapPoint, and pointB: MKMapPoint) -> CLLocationDistance {
-        let dx = pointB.x - pointA.x
-        let dy = pointB.y - pointA.y
-        let lengthSquared = dx * dx + dy * dy
-
-        if lengthSquared == 0 {
-            return point.distance(to: pointA)
-        }
-
-        var t = ((point.x - pointA.x) * dx + (point.y - pointA.y) * dy) / lengthSquared
-        t = max(0, min(1, t))
-
-        let projection = MKMapPoint(x: pointA.x + t * dx, y: pointA.y + t * dy)
-        return point.distance(to: projection)
     }
 }

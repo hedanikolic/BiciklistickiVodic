@@ -11,7 +11,7 @@ import SwiftUI
 struct biciklApp: App {
     
     var bikeStopData = BikeStopData()
-    var routeData = RouteData()
+    @StateObject var routeData = RouteData()
     
     var body: some Scene {
         WindowGroup {
@@ -26,13 +26,14 @@ struct biciklApp: App {
                         Label("Staze", systemImage: "bicycle")
                     }
                 
-                BikeStopView()
+                BikeStopList()
                     .tabItem{
                         Label("Stanice", systemImage: "mappin.and.ellipse")
                     }
             }
             .environmentObject(bikeStopData)
             .environmentObject(routeData)
+            .preferredColorScheme(.light)
         }
     }
 }

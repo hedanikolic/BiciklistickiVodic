@@ -11,20 +11,27 @@ struct RouteDetailView: View {
     var route: Route
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(spacing: 12) {
             Text(route.name)
-                .font(.largeTitle)
-                .padding(.bottom, 5)
+                .font(.title).bold()
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 10)
+            HStack{
+                Text("Ruta:")
+                    .font(.headline)
+                    .padding(.horizontal)
+                Spacer()
+            }
+            Text(String(route.description.dropFirst(6)))
+                .font(.title3)
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
             Text(String(route.description.prefix(6)))
                 .font(.headline)
-                .padding()
-            Text(String(route.description.dropFirst(7)))
-                .font(.title2)
-                .padding(.vertical)
-            Spacer()
+                .padding(.top)
         }
-        .padding()
-        //.navigationTitle(route.name)
+        .padding([.bottom, .horizontal])
     }
 }
 
